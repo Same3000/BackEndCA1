@@ -15,6 +15,7 @@ def create_webnovels(request):
     form = NovelFrom(request.POST or None)
     if form.is_valid():
         form.save()
+        return HttpResponseRedirect("webnovels/")
     context['form'] = form
     return render(request, "WebNovels/form.html", context)
 
