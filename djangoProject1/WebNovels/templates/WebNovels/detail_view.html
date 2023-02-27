@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Detail View</title>
+        <style>
+        body {
+	font-family: Arial, sans-serif;
+	margin: 0;
+	padding: 0;
+	background-color: #f0f0f0;
+	}
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 {
+            font-size: 2.5rem;
+            margin-top: 0;
+            text-align: center;
+            color: #333;
+        }
+        h2 {
+            font-size: 1.5rem;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 5px;
+        }
+        li span {
+            font-weight: bold;
+        }
+        .button {
+            border: none;
+            color: white;
+            padding: 16px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            transition-duration: 0.4s;
+            cursor: pointer;
+            }
+
+        .button1 {
+            background-color: white;
+            color: black;
+            border: 2px solid #4CAF50;
+            }
+
+        .button1:hover {
+            background-color: #4CAF50;
+            color: white;
+            }
+
+    </style>
+</head>
+<body class="container">
+    <button onclick="window.location.href='http://127.0.0.1:8000/';"class="button button1">Home</button>
+    <li><span>Title:</span> {{ data.name }}</li>
+    <li><span>Author:</span> {{ data.author }}</li>
+    <li><span>Price:</span> ${{ data.price }}</li>
+    <li><span>Status:</span> {{ data.status}}</li>
+    <li><span>Publication Date:</span> {{ data.pub_date}}</li>
+    <li><span>Views:</span> {{ data.views}}</li>
+    <li><span>Length:</span> {{ data.length}}</li>
+    <li><span>Genre:</span> {% for genre in data.tags.all %} {{ genre }}</li>
+    {% endfor %}
+    <br>
+    <button onclick="window.location.href= '{% url 'WebNovels:delete' data.id %}'" class="button button1">Delete</button>
+    <button onclick="window.location.href= '{% url 'WebNovels:update' data.id %}'" class="button button1">Update</button>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+	<title>My Book Retail App</title>
+    <style>
+        body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f0f0f0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 {
+            font-size: 2.5rem;
+            margin-top: 0;
+            text-align: center;
+            color: #333;
+        }
+        h2 {
+            font-size: 1.5rem;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 5px;
+        }
+        li span {
+            font-weight: bold;
+        }
+        .no-books {
+            color: #777;
+        }
+        .button {
+            border: none;
+            color: white;
+            padding: 16px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            transition-duration: 0.4s;
+            cursor: pointer;
+            }
+
+        .button1 {
+            background-color: white;
+            color: black;
+            border: 2px solid #4CAF50;
+            }
+
+        .button1:hover {
+            background-color: #4CAF50;
+            color: white;
+            }
+
+        .aligned {
+            text-align: center;
+            }
+    </style>
+</head>
+<body>
+	<div class="container">
+		<h1>Welcome to My WebNovel Retail App</h1>
+
+		{% if books %}
+			<h2>Available Books:</h2>
+			<ul>
+				{% for book in books %}
+					<li><span>Title:</span> {{ book.name }}</li>
+					<li><span>Author:</span> {{ book.author }}</li>
+					<li><span>Price:</span> ${{ book.price }}</li>
+					<li><span>Status:</span> {{ book.status}}</li>
+                    <li><span>Publication Date:</span> {{ book.pub_date}}</li>
+                    <li><span>Views:</span> {{ book.views}}</li>
+                    <li><span>Length:</span> {{ book.length}}</li>
+                    <li><span>Genre:</span> <br>{% for genre in book.tags.all %}{{ genre }}</li>
+                    {% endfor %}
+                    <br>
+                    <button onclick="window.location.href= '{% url 'WebNovels:detail' book.id %}'" class="button button1">Details</button>
+					<hr>
+				{% endfor %}
+			</ul>
+		{% else %}
+			<p class="no-books">No books available at the moment.</p>
+		{% endif %}
+	</div>
+    <div class="aligned">
+        <button onclick="window.location.href='http://127.0.0.1:8000/form';"class="button button1">Add WebNovel</button>
+    </div>
+
+</body>
+</html>
