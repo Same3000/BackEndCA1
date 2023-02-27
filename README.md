@@ -24,6 +24,10 @@ The project provides a web interface for managing Webnovels in the database. To 
 From the interface, you can perform the following actions:
 
 -View a list of all Webnovels in the database
+
 -Add a new Webnovel to the database
+
 -Edit the details of an existing Webnovel
+
 -Delete a Webnovel from the database
+
