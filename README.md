@@ -7,7 +7,7 @@ To install and run the project, follow these steps:
 Clone the repository to your local machine using the command:
 
 ```
-git clone <repository_url>
+git clone https://github.com/Same3000/BackEndCA1
 ```
 
 Run in yout shell: 
